@@ -10,6 +10,7 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        unique: true,
       },
       male: {
         type: Sequelize.INTEGER,
