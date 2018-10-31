@@ -20,6 +20,10 @@ const locationService = {
       },
     });
   },
+
+  delete: (name) => {
+    return db.Locations.destroy({ where: { name } });
+  },
 };
 
 export default locationService;
