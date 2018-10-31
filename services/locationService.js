@@ -12,6 +12,14 @@ const locationService = {
       },
     });
   },
+
+  getAll: () => {
+    return db.Locations.findAll({
+      include: {
+        association: 'childLocation',
+      },
+    });
+  },
 };
 
 export default locationService;

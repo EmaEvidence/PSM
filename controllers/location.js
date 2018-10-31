@@ -1,6 +1,7 @@
 import locationService from '../services/locationService';
 import handleResponse from '../helpers/handleResponse';
 import pruneResponse from '../helpers/pruneResponse';
+import computeTotalPopulation from '../helpers/computeTotalPopulation';
 
 const location = {
   add: (req, res) => {
@@ -26,7 +27,7 @@ const location = {
   },
 
   get: (req, res) => {
-    const name = req.body.name || req
+    const name = req.body.name || req.params.name;
     locationService.get(name)
       .then((response) => {
         if (response) {
@@ -44,10 +45,21 @@ const location = {
     return res.status(200);
   },
 
+  getAll: (req, res) => {
+    locationService.getAll()
+      .then((response) => {
+        if (!response) {
+          return handleResponse(res, 404, 'Locations not found');
+        }
+        return handleResponse(res, 200, 'Locations loaded',
+          computeTotalPopulation(pruneResponse(response, 'get')));
+      })
+      .catch(() => handleResponse(res, 500, 'Error loading Locations'));
+  },
+
   delete: (req, res) => {
     return res.status(200);
-  }
-
-}
+  },
+};
 
 export default location;
