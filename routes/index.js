@@ -8,7 +8,7 @@ const Route = Router();
 Route.post('/location', validator.validateName, validator.validateMale,
   validator.validateFemale, validator.validateParentLocation, location.add);
 
-Route.get('/locations', location.get);
+Route.get('/locations', location.getAll);
 
 Route.delete('/location/:name', location.delete);
 

@@ -23,7 +23,7 @@ module.exports = {
         references: {
           model: 'Locations',
           key: 'id',
-          as: 'parentLocation',
+          as: 'childLocation',
         },
         onDelete: 'set null',
       },
