@@ -24,6 +24,14 @@ const locationService = {
   delete: (name) => {
     return db.Locations.destroy({ where: { name } });
   },
+
+  update: (name, data) => {
+    return db.Locations.update(data, {
+      where: {
+        name,
+      },
+    });
+  },
 };
 
 export default locationService;
