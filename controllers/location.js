@@ -58,7 +58,15 @@ const location = {
   },
 
   delete: (req, res) => {
-    return res.status(200);
+    const { name } = req.params;
+    locationService.delete(name)
+      .then((response) => {
+        if (response === 0) {
+          return handleResponse(res, 404, 'Location not found');
+        }
+        return handleResponse(res, 200, 'Location deleted');
+      })
+      .catch(() => handleResponse(res, 500, 'Error deleting Location'));
   },
 };
 
