@@ -23,7 +23,22 @@ const location = {
   },
 
   update: (req, res) => {
-    return res.status(200);
+    const { name, male, female, parentLocationId } = req.body;
+    const oldName = req.params.name;
+    locationService.update(oldName, { name, male, female, parentLocationId })
+      .then(([response]) => {
+        if (response === 0) {
+          return handleResponse(res, 404, 'Location not found');
+        }
+        return handleResponse(res, 200, 'Location Edited');
+      })
+      .catch((error) => {
+        const errorObj = error.errors[0] || {};
+        if (errorObj.message === 'name must be unique') {
+          return handleResponse(res, 409, 'Location Name must be Unique');
+        }
+        return handleResponse(res, 500, 'Error creating Location');
+      });
   },
 
   get: (req, res) => {
@@ -68,6 +83,7 @@ const location = {
       })
       .catch(() => handleResponse(res, 500, 'Error deleting Location'));
   },
+
 };
 
 export default location;
