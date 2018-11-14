@@ -11,7 +11,7 @@ const location = {
         if (response[1]) {
           return handleResponse(res, 201, 'Location created', pruneResponse(response[0].dataValues));
         }
-        return handleResponse(res, 409, 'Contact already exist');
+        return handleResponse(res, 409, 'Location already exist');
       })
       .catch((error) => {
         const errorObj = error.errors[0] || {};
