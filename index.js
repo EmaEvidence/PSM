@@ -27,4 +27,6 @@ const port = process.env.port || 6000;
 
 app.listen(port, () => {
   console.log('We are live');
-})
+});
+
+export default app;
