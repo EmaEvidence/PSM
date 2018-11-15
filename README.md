@@ -27,9 +27,9 @@ The functionality of this web app being a node.js app depends on the following t
 
 ## The API.
 The API exposes the following endpoints for consumption:  
-  1. ```POST``` /location. The API takes the following parameters name, male, female, parentLocation. The parentLocation is optional, its only provided if the Location is to be nested to another location. It creates a location 
+  1. ```POST``` /location. The API takes the following parameters name, male, female, parentLocation. The parentLocation is optional, its only provided if the Location is to be nested to another location. It creates a location.   
   2. ```GET``` /locations. Retrieves every available location.  
-  3. ```DELETE``` /location/:name. The API takes the following parameters name and it deletes the location with the provided name. If the location has other location nested to it, their parentLocation identity is set to null. 
+  3. ```DELETE``` /location/:name. The API takes the following parameters name and it deletes the location with the provided name. If the location has other location nested to it, their parentLocation identity is set to null.   
   4. ```PUT``` /location/:name. The API takes the following parameters name, male, female, parentLocation. It edits the data of a location with the specified name 
 
 The API documentation for this project can be found [here](https://populationsystemmanager.docs.apiary.io/#)
