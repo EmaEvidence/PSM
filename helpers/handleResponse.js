@@ -3,6 +3,6 @@ const handleResponse = (res, statusCode, message, data = {}) => {
     message,
     data,
   });
-}
+};
 
 export default handleResponse;

@@ -4,7 +4,6 @@ import * as validator from '../middlewares/validator';
 
 const Route = Router();
 
-
 Route.post('/location', validator.validateName, validator.validateMale,
   validator.validateFemale, validator.validateParentLocation, location.add);
 
